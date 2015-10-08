@@ -1,0 +1,21 @@
+﻿<div class="container-fluid view">
+  <form class="form-signin" ng-submit="authenticate()">
+    <h2 class="form-signin-heading">@Context.Text.Res.PleaseEnterLoginInfo</h2>
+    <label for="inputNick" class="sr-only">@Context.Text.Res.Account</label>
+    <input type="text" id="inputNick" class="form-control" placeholder="@Context.Text.Res.Account" required autofocus ng-model="login.Nick">
+    <label for="inputPassword" class="sr-only">@Context.Text.Res.Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="@Context.Text.Res.Password" required ng-model="login.Password">
+    <div ng-if="result.code == 'CaptchaRequired'" class="row">
+      <div class="col-xs-6">
+        <a href="javascript:void(0)" onclick="document.getElementById('captcha').src='/captcha?_='+Math.random()"><img id="captcha" ng-src="/captcha" style="border:0" /></a>
+      </div>
+      <div class="col-xs-6">
+        <input type="text" id="inputCaptcha" class="form-control" placeholder="@Context.Text.Res.Captcha" ng-model="login.captcha" required>
+      </div>
+    </div>
+    <div ng-if="result && result.code != 'SUCCESS'" class="alert alert-danger">
+      {{result.message}}
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">@Context.Text.Res.Login</button>
+  </form>
+</div>
