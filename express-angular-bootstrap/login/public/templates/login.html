@@ -1,0 +1,27 @@
+﻿<div class="container-fluid view">
+  <form name="loginForm" class="form-signin" ng-submit="authenticate()">
+    <h2 class="form-signin-heading">用户登录</h2>
+
+    <label for="account" class="sr-only">帐号</label>
+    <input type="text" id="account" class="form-control" placeholder="登录帐号" required autofocus ng-model="data.account">
+
+    <label for="password" class="sr-only">密码</label>
+    <input type="password" id="password" class="form-control" placeholder="登录密码" required ng-model="data.password">
+    
+    <label for="captcha" class="sr-only">校验码</label>
+    <div class="row">
+      <div class="col-sm-7">
+        <input type="text" id="captcha" class="form-control" placeholder="请输入右边6位数字" required ng-model="data.captchaCode" ng-pattern="/^\d{6}$/">
+      </div>
+      <div id="captchaImg" class="col-sm-5">
+        <a href="" ng-click="loadCaptchaImage()" title="点击刷新"><img ng-src="{{ captchaSrc }}" /></a>
+      </div>
+    </div>
+
+    <div ng-if="error" class="alert alert-danger am-collapse pad">
+      {{ error.description }}
+    </div>
+
+    <button id="submit" class="btn btn-lg btn-primary btn-block pad" type="submit" ng-disabled="!loginForm.$valid">登录</button>
+  </form>
+</div>

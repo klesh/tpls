@@ -1,0 +1,36 @@
+
+.form-signin {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.form-signin .form-control {
+  font-size: 1.2em;
+  padding: 10px;
+  height: auto;
+}
+
+.form-signin #account {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-signin #password {
+  margin-top: -1px;
+  border-radius: 0;
+}
+
+.form-signin #captcha {
+  margin-top: -1px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.form-signin .pad {
+  margin-top: 1em;
+}
+
+.form-signin #captchaImg {
+  padding-top: 8px;
+}

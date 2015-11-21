@@ -1,0 +1,55 @@
+$bar-bg-color: #f1f1f1;
+$bar-border-color: #ddd;
+$bar-radius: 5px;
+
+.bar {
+  padding: 5px;
+  padding-bottom: 7px;
+  background: $bar-bg-color;
+  border: solid 1px $bar-border-color;
+  border-radius: $bar-radius;
+  margin-bottom: 1em;
+}
+
+.bar-text {
+  font-size: 18px;
+  line-height: 34px;
+  color: #666;
+  padding-left: 1em;
+}
+
+.search-box {
+  margin: -1em 1em 1em 1em;
+  border: 1px solid $bar-border-color;
+  border-top: none;
+  border-bottom-left-radius: $bar-radius;
+  border-bottom-right-radius: $bar-radius;
+  padding: 10px 7px 5px 7px;
+}
+
+.error {
+  color: red;
+}
+
+.detail-label {
+  padding: 7px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.detail-control {
+  padding: 7px;
+}
+
+.list-item {
+  border-bottom: solid 1px #e1e1e1;
+  padding: 10px;
+}
+
+.list-item.active {
+  background: #eee;
+}
+
+.gap {
+  margin-top: 1em;
+}
