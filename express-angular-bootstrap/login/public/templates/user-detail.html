@@ -1,3 +1,4 @@
+<div class="container">
 <div class="bar">
   <span class="bar-text">用户资料</span>
   <div class="btn-group pull-right">
@@ -10,37 +11,38 @@
   <div class="col-md-6">
 
     <div class="row">
-      <div class="col-sm-4 detail-label">帐号</div>
-      <div class="col-sm-8 detail-control">{{ detail.account }}</div>
+      <div class="col-xs-3 detail-label">帐号</div>
+      <div class="col-xs-9 detail-control">{{ detail.account }}</div>
     </div>
 
     <div class="row">
-      <div class="col-sm-4 detail-label">超级管理员</div>
-      <div class="col-sm-8 detail-control">{{ detail.root ? '是' : '否' }}</div>
+      <div class="col-xs-3 detail-label">超级管理员</div>
+      <div class="col-xs-9 detail-control">{{ detail.root ? '是' : '否' }}</div>
     </div>
 
     <div class="row">
-      <div class="col-sm-4 detail-label">停用</div>
-      <div class="col-sm-8 detail-control">{{ detail.disabled ? '是' : '否' }}</div>
+      <div class="col-xs-3 detail-label">停用</div>
+      <div class="col-xs-9 detail-control">{{ detail.disabled ? '是' : '否' }}</div>
     </div>
 
     <div class="row">
-      <div class="col-sm-4 detail-label">姓名</div>
-      <div class="col-sm-8 detail-control">{{ detail.name }}</div>
+      <div class="col-xs-3 detail-label">姓名</div>
+      <div class="col-xs-9 detail-control">{{ detail.name }}</div>
     </div>
 
   </div>
   <div class="col-md-6">
 
     <div class="row">
-      <div class="col-sm-4 detail-label">创建时间</div>
-      <div class="col-sm-8 detail-control">{{ detail.createdAt | date: 'medium' }}</div>
+      <div class="col-xs-3 detail-label">创建时间</div>
+      <div class="col-xs-9 detail-control">{{ detail.createdAt | date: 'medium' }}</div>
     </div>
 
     <div class="row">
-      <div class="col-sm-4 detail-label">最后登录</div>
-      <div class="col-sm-8 detail-control">{{ detail.logonAt | date: 'medium' }}</div>
+      <div class="col-xs-3 detail-label">最后登录</div>
+      <div class="col-xs-9 detail-control">{{ detail.logonAt | date: 'medium' }}</div>
     </div>
   
   </div>
+</div>
 </div>

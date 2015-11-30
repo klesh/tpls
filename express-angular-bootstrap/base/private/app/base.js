@@ -18,8 +18,18 @@ module.exports = function(app) {
         return 'document.write("<script src=\'/js/' + js + '\'></scr" + "ipt>");';
       });
       scripts.push(fs.readFileSync('./node_modules/faker/build/build/faker.min.js').toString());
+      //scripts.push('faker.locale = "zh_CN";');
       res.end(scripts.join('\n'));
     });
+  });
+  app.use('/timeout/:seconds',function(req, res, next) {
+    setTimeout(function() {
+      res.end(req.params.seconds + ' seconds is up');
+    }, req.params.seconds * 1000);
+  });
+
+  app.use('/redirect/:to', function(req, res, next) {
+    res.redirect('http://' + req.params.to);
   });
 
   // static resources suppose to be served by nginx some kind.

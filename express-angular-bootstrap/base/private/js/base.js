@@ -7,6 +7,8 @@ function longListCtrl($scope, Resource) {
   $scope.params = Resource.params = Resource.params || {};
   // to keep listing page status.
   $scope.state = Resource.state = Resource.state || {};
+  // get cached list
+  $scope.list = Resource.list;
 
   // load list into $scope.list and detect if there are more.
   function updateList(refresh, list) {
@@ -18,6 +20,8 @@ function longListCtrl($scope, Resource) {
     } else {
       delete $scope.params.lastId;
     }
+    if (last)
+      $scope.params.toId = last.id;
     // there are more if lastId presented.
 
     if (refresh) {
@@ -25,6 +29,7 @@ function longListCtrl($scope, Resource) {
     } else {
       _.each(list, function(item) { $scope.list.push(item); });
     }
+    Resource.list = $scope.list;
   }
 
   var refreshList = _.partial(updateList, true);
@@ -40,7 +45,7 @@ function longListCtrl($scope, Resource) {
 
   // load more data base on params.
   $scope.loadMore = function() {
-    $scope.loading = true;
+    delete $scope.params.toId;
     Resource.query($scope.params).$promise.then(appendList);
   };
 
@@ -58,7 +63,19 @@ function longListCtrl($scope, Resource) {
     }
   });
 
-  $scope.doSearch();
+  // load list if cached is not available.
+  if (!$scope.list) {
+    $scope.doSearch();
+  } else {
+    setTimeout(function() {
+      window.scrollTo($scope.state.scrollX, $scope.state.scrollY);
+    }, 100);
+  }
+
+  $scope.$on('$destroy', function() {
+    $scope.state.scrollX = window.scrollX;
+    $scope.state.scrollY = window.scrollY;
+  });
 }
 
 // regular detail logic
@@ -71,9 +88,18 @@ function formCtrl($scope, $routeParams, Resource) {
   $scope.detail = $routeParams.id ? Resource.get($routeParams) : new Resource();
   $scope.save = function() {
     $scope.detail.$save().then(function() {
+      Resource.list = null; // clear list cache
       window.history.back();
     }, function(res) {
       $scope.error = res.data;
     });
   };
+}
+
+// return human readable duration between start and end
+function duration(start, end) {
+  if (!start || !end) return;
+  if (_.isString(start)) start = moment(start);
+  if (_.isString(end)) end = moment(end);
+  return moment.duration(end - start).humanize();
 }
