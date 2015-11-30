@@ -17,6 +17,7 @@ module.exports = function(app) {
       var scripts = _.filter(files, f => _.endsWith(f, '.js')).map(function(js) {
         return 'document.write("<script src=\'/js/' + js + '\'></scr" + "ipt>");';
       });
+      scripts.push(fs.readFileSync('./node_modules/faker/build/build/faker.min.js').toString());
       res.end(scripts.join('\n'));
     });
   });

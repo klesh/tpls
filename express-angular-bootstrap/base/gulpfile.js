@@ -15,7 +15,8 @@ gulp.task('initial', function() {
     'bower_components/angular-animate/angular-animate.min.js',
     'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
     'bower_components/angular-i18n/angular-locale_zh-hans.js',
-    'bower_components/lodash/lodash.min.js'
+    'bower_components/lodash/lodash.min.js',
+    'node_modules/moment/min/moment-with-locales.min.js'
   ])
   .pipe(concat('lib.js'))
   .pipe(gulp.dest('public/js/'));

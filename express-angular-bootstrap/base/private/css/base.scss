@@ -53,3 +53,25 @@ $bar-radius: 5px;
 .gap {
   margin-top: 1em;
 }
+
+.section-head {
+  text-align: center;
+}
+
+.section-body {
+  border-top: solid 1px #eee;
+}
+
+div.form-control {
+  border:none;
+  box-shadow:none;
+  padding-left: 0;
+}
+
+.pill {
+  border: solid 1px #ddd;
+  background: #eee;
+  border-radius: 5px;
+  margin: 0 3px 3px 0;
+  padding: 3px 6px;
+}

@@ -43,8 +43,6 @@ User.digestToken = function(user) {
     user.logonAt.valueOf() // remove this to allow multiple login
   ].join('-');
   var hash = crypto.createHmac('sha1', config.secret).update(text).digest('hex');
-  console.log(text);
-  console.log(hash);
   return hash;
 };
 

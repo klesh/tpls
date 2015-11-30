@@ -32,18 +32,6 @@ angular.module('appControllers', [])
   loadCaptchaImage();
 }])
 
-.controller('MeCtrl', ['$scope', 'User', function($scope, User) {
-  $scope.me = {
-    account: store.get('account'),
-    id: store.get('user_id'),
-    logonAt: store.get('logonAt')
-  };
-
-  $scope.changePassword = function() {
-    User.passwd({ id: $scope.me.id, password: $scope.newPass });
-  };
-}])
-
 .controller('HomeCtrl', [function() {
   
 }])

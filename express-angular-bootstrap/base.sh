@@ -19,6 +19,7 @@ npm install gulp-concat --save-dev
 npm install gulp-uglify --save-dev
 npm install gulp-minify-css --save-dev
 npm install gulp-sass --save-dev
+npm install faker --save-dev
 
 # install useful npm package
 echo "Installing server side packages"
