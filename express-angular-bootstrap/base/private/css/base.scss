@@ -2,6 +2,14 @@ $bar-bg-color: #f1f1f1;
 $bar-border-color: #ddd;
 $bar-radius: 5px;
 
+.control-label {
+  text-align: right;
+}
+
+body {
+  padding-bottom: 50px;
+}
+
 .bar {
   padding: 5px;
   padding-bottom: 7px;
@@ -44,6 +52,7 @@ $bar-radius: 5px;
 .list-item {
   border-bottom: solid 1px #e1e1e1;
   padding: 10px;
+  display:block;
 }
 
 .list-item.active {
@@ -74,4 +83,5 @@ div.form-control {
   border-radius: 5px;
   margin: 0 3px 3px 0;
   padding: 3px 6px;
+  display: inline-block;
 }

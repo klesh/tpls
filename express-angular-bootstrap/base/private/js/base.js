@@ -52,7 +52,9 @@ function longListCtrl($scope, Resource) {
   // search by params
   $scope.doSearch = function() {
     delete $scope.params.lastId;
-    Resource.query($scope.params).$promise.then(refreshList);
+    if ($scope.list)
+      delete $scope.params.toId;
+    return Resource.query($scope.params).$promise.then(refreshList);
   };
 
   // watch search switch, reset the query params when it's off.
@@ -65,11 +67,15 @@ function longListCtrl($scope, Resource) {
 
   // load list if cached is not available.
   if (!$scope.list) {
-    $scope.doSearch();
+    $scope.doSearch().then(restorePos);
   } else {
+    restorePos();
+  }
+
+  function restorePos() {
     setTimeout(function() {
       window.scrollTo($scope.state.scrollX, $scope.state.scrollY);
-    }, 100);
+    }, 700);
   }
 
   $scope.$on('$destroy', function() {
