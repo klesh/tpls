@@ -7,8 +7,6 @@ function longListCtrl($scope, Resource) {
   $scope.params = Resource.params = Resource.params || {};
   // to keep listing page status.
   $scope.state = Resource.state = Resource.state || {};
-  // get cached list
-  $scope.list = Resource.list;
 
   // load list into $scope.list and detect if there are more.
   function updateList(refresh, list) {
@@ -29,7 +27,6 @@ function longListCtrl($scope, Resource) {
     } else {
       _.each(list, function(item) { $scope.list.push(item); });
     }
-    Resource.list = $scope.list;
   }
 
   var refreshList = _.partial(updateList, true);
@@ -65,12 +62,7 @@ function longListCtrl($scope, Resource) {
     }
   });
 
-  // load list if cached is not available.
-  if (!$scope.list) {
-    $scope.doSearch().then(restorePos);
-  } else {
-    restorePos();
-  }
+  $scope.doSearch().then(restorePos);
 
   function restorePos() {
     setTimeout(function() {
@@ -94,7 +86,6 @@ function formCtrl($scope, $routeParams, Resource) {
   $scope.detail = $routeParams.id ? Resource.get($routeParams) : new Resource();
   $scope.save = function() {
     $scope.detail.$save().then(function() {
-      Resource.list = null; // clear list cache
       window.history.back();
     }, function(res) {
       $scope.error = res.data;
